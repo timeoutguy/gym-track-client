@@ -5,10 +5,12 @@ import Navbar from './components/Navbar';
 import Routes from './routes';
 
 function App() {
-  <BrowserRouter>
-    <Navbar />
-    <Routes />
-  </BrowserRouter>;
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes />
+    </BrowserRouter>
+  );
 }
 
 export default App;
