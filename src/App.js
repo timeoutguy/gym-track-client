@@ -1,14 +1,14 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages/Home/index';
+
+import Routes from './routes';
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <Home />
-    </>
-  );
+  <BrowserRouter>
+    <Navbar />
+    <Routes />
+  </BrowserRouter>;
 }
 
 export default App;
