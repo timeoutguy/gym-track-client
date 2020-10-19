@@ -1,17 +1,14 @@
 import React from 'react';
 
-const Step = () => {
+const Step = ({ stepNumber, title, description }) => {
   return (
-    <div className="block lg:flex lg:flex-col justify-center text-center lg:mx-8">
+    <div className="lg:flex lg:flex-col justify-center text-center mb-4 lg:mx-8">
       <div className="bg-primary rounded-full w-10 h-10 mx-auto text-white mb-1">
-        <span className="text-2xl">1</span>
+        <span className="text-2xl">{stepNumber}</span>
       </div>
-      <p className="font-bold">O ser instrutor te cadastra no sistema</p>
-      <p className="bg-primary rounded-full w-16 h-1 mx-auto "></p>
-      <p className="mt-4">
-        Ao ingressar na academia o instrutor te cadastra no sistema e te informa
-        as credencias para fazer login
-      </p>
+      <p className="font-bold">{title}</p>
+      <div className="bg-primary rounded-full w-16 h-1 mx-auto "></div>
+      <p className="mt-4">{description}</p>
     </div>
   );
 };

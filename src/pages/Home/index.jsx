@@ -20,10 +20,18 @@ const Home = () => {
           <img src={hero} alt="Pessoa malhando" />
         </div>
       </div>
-      <div className="p-4 lg:px-24 flex lg:justify-evenly">
-        <Step />
-        <Step />
-        <Step />
+      <div className="p-4 lg:px-24 flex flex-col lg:flex-row lg:justify-around">
+        <Step
+          stepNumber={1}
+          title="O seu instrutor te cadastra no sistema"
+          description="Ao ingressar na academia o instrutor te cadastra no sistema e te informa as credencias para fazer login"
+        />
+        <Step
+          stepNumber={2}
+          title="Encontre sua lista de exercicio de forma pratica"
+          description="Por meio do sistema você consegue visualizar as listas de exercicios para cada dia da semana e como os exercicios agem no seu corpo"
+        />
+        <Step stepNumber={3} title="Lorem Ipsum" description="Lorem Ipsum" />
       </div>
     </>
   );
