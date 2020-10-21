@@ -20,7 +20,7 @@ const Home = () => {
           <img src={hero} alt="Pessoa malhando" />
         </div>
       </div>
-      <div className="p-4 lg:px-24 flex flex-col lg:flex-row lg:justify-around">
+      <div className="p-4 lg:px-24 flex flex-col lg:flex-row">
         <Step
           stepNumber={1}
           title="O seu instrutor te cadastra no sistema"
@@ -31,7 +31,11 @@ const Home = () => {
           title="Encontre sua lista de exercicio de forma pratica"
           description="Por meio do sistema você consegue visualizar as listas de exercicios para cada dia da semana e como os exercicios agem no seu corpo"
         />
-        <Step stepNumber={3} title="Lorem Ipsum" description="Lorem Ipsum" />
+        <Step
+          stepNumber={3}
+          title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam scelerisque nunc non accumsan congue. Vivamus elementum scelerisque urna in ultrices."
+        />
       </div>
     </>
   );
