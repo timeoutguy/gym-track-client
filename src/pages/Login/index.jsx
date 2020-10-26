@@ -2,50 +2,41 @@ import React from 'react';
 
 const Login = () => {
   return (
-    <>
-      <div className="lg:flex items-center justify-start lg:px-64 lg:py-16 lg:flex-col">
-        <h1 className="lg:object-center font-extrabold text-4xl p">Nojin</h1>
-        <h4 className="text-gray-600">
-          Para visualizar o painel de ações é necessario fazer Nojin
-        </h4>
-      </div>
-      <div
-        for="email"
-        className="lg:flex items-center justify-center lg:px-64  lg:flex-col mb-2"
-      >
-        <label className="text-black text-2xl">E-mail</label>
-        <input
-          className="border-gray-600 border-2 rounded-lg h-10 w-4/12 text-black text-justify placeholder-gray-900 pl-3 mt-2"
-          type="text"
-          name="email"
-          placeholder="digite seu endereço de e-mail"
-        />
-      </div>
-      <div className="lg:flex items-center lg:px-64  lg:flex-col">
-        <label for="password" className="text-black text-2xl">
-          Senha
-        </label>
-        <input
-          className="border-gray-600 border-2 rounded-lg h-10 w-4/12 text-black placeholder-gray-900 pl-3 mt-2 mb-10"
-          type="text"
-          name="password"
-          placeholder="digite sua senha"
-        />
-      </div>
-      <div className="flex items-center justify-center">
-        <button className="mr-4 bg-primary py-2 px-4 rounded-full text-white font-bold placeholder-gray-600 mb-2">
+    <div className="flex flex-col mx-auto justify-center p-4 lg:w-4/12 lg:mt-32">
+      <h1 className="font-bold text-4xl text-dark_grey">Faça Login</h1>
+      <h4 className="text-dark_grey font-light text-lg">
+        Para visualizar o painel de ações é necessario fazer login
+      </h4>
+      <label className="text-dark_grey text-2xl font-light mt-6">E-mail</label>
+      <input
+        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
+        type="text"
+        name="email"
+        placeholder="Digite seu endereço de e-mail"
+      />
+
+      <label for="password" className="text-dark_grey text-2xl font-light">
+        Senha
+      </label>
+      <input
+        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
+        type="password"
+        name="password"
+        placeholder="Digite sua senha"
+      />
+
+      <div className="flex flex-col justify-center items-center">
+        <button className="bg-primary mt-8 p-2 rounded-full text-white font-bold w-1/2">
           Entrar
         </button>
-      </div>
-      <div className="flex items-center justify-center">
-        <h4 className="font-bold">
+        <p className="font-light mt-4">
           Ainda não tem uma conta? Faça seu cadastro{' '}
-          <a href="#" className="text-primary font-bold">
+          <a href="" className="text-primary font-normal">
             clicando aqui
           </a>
-        </h4>
+        </p>
       </div>
-    </>
+    </div>
   );
 };
 
