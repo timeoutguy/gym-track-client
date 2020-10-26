@@ -1,18 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div className="footer mt-8">
+    <div className="footer mt-16">
       <h2 className="p-2 lg:px-24 lg:flex.items-center">WEBSITE MAP</h2>
       <div className="p-2 lg:px-24 lg:flex.items-center">
-        <ul>
-          <li className="text-gray-600">Home</li>
-          <li className="text-gray-600 mt-2">Sobre</li>
+        <ul className="flex flex-col">
+          <Link to="/" className="text-gray-600">
+            Home
+          </Link>
+          <Link to="/about" className="text-gray-600 mt-2">
+            Sobre
+          </Link>
         </ul>
         <div className="flex flex-row justify-center text-center">
-          <h2 className="text-gray-600 px-4 mt-6">Termos de serviço</h2>
-          <h2 className="text-gray-600 px-4 mt-6">Política de Privacidade</h2>
-          <h2 className="text-gray-600 px-4 mt-6">Sitemap</h2>
+          <Link to="/" className="text-gray-600 px-4 mt-6">
+            Termos de serviço
+          </Link>
+          <Link to="/" className="text-gray-600 px-4 mt-6">
+            Política de Privacidade
+          </Link>
+          <Link to="/" className="text-gray-600 px-4 mt-6">
+            Sitemap
+          </Link>
         </div>
       </div>
     </div>
