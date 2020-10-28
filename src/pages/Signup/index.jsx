@@ -4,8 +4,29 @@ import Cep from 'react-simple-cep-mask';
 import PhoneInput from 'react-phone-number-input/input';
 
 const Signup = () => {
-  const [cep, setCep] = useState('');
-  const [phone, setPhone] = useState('');
+  const initialState = {
+    email: '',
+    password: '',
+    name: '',
+    neighborhood: '',
+    street: '',
+    number: 0,
+    complement: '',
+    cep: '',
+    city: '',
+    phone: '',
+  };
+
+  const [email, setEmail] = useState(initialState.email);
+  const [password, setPassword] = useState(initialState.password);
+  const [name, setName] = useState(initialState.name);
+  const [neighborhood, setNeighborhood] = useState(initialState.neighborhood);
+  const [street, setStreet] = useState(initialState.street);
+  const [number, setNumber] = useState(initialState.number);
+  const [complement, setComplement] = useState(initialState.complement);
+  const [cep, setCep] = useState(initialState.cep);
+  const [city, setCity] = useState(initialState.city);
+  const [phone, setPhone] = useState(initialState.phone);
 
   return (
     <div className="flex flex-col mx-auto justify-center p-4 lg:w-4/12 lg:mt-16">
@@ -19,6 +40,8 @@ const Signup = () => {
         type="text"
         name="email"
         placeholder="Digite seu endereço de e-mail"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <label for="password" className="text-dark_grey text-2xl font-light mt-6">
         Senha
@@ -28,6 +51,8 @@ const Signup = () => {
         type="password"
         name="password"
         placeholder="Digite sua senha"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
       <label className="text-dark_grey text-2xl font-light mt-6">
         Nome da academia
@@ -37,6 +62,8 @@ const Signup = () => {
         type="text"
         name="name"
         placeholder="Digite o nome da sua academia"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
       <label className="text-dark_grey text-2xl font-light mt-6">Bairro</label>
       <input
@@ -44,6 +71,8 @@ const Signup = () => {
         type="text"
         name="neighborhood "
         placeholder="Digite o bairro da academia"
+        value={neighborhood}
+        onChange={(e) => setNeighborhood(e.target.value)}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">Rua</label>
       <input
@@ -51,6 +80,8 @@ const Signup = () => {
         type="text"
         name="street"
         placeholder="Digite a rua da academia"
+        value={street}
+        onChange={(e) => setStreet(e.target.value)}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">
         Número
@@ -60,6 +91,8 @@ const Signup = () => {
         type="number"
         name="number"
         placeholder="Digite o bairro da academia"
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">
         Complemento
@@ -69,14 +102,16 @@ const Signup = () => {
         type="text"
         name="street"
         placeholder="Digite um complemento da academia"
+        value={complement}
+        onChange={(e) => setComplement(e.target.value)}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">CEP</label>
       <Cep
         value={cep}
-        onChange={(cep) => setCep(cep)}
         className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
         name="cep"
         placeholder="Digite o cep da academia"
+        onChange={(cep) => setCep(cep)}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">
         Cidade
@@ -86,6 +121,8 @@ const Signup = () => {
         type="text"
         name="city"
         placeholder="Digite a cidade da academia"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">
         Telefone
@@ -93,9 +130,9 @@ const Signup = () => {
       <PhoneInput
         country="BR"
         value={phone}
-        onChange={setPhone}
         className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
         placeholder="Digite o telefone da academia"
+        onChange={setPhone}
       />
       <div className="flex flex-col justify-center items-center ">
         <button
