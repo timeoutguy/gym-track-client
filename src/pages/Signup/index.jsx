@@ -1,32 +1,41 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Cep from 'react-simple-cep-mask';
-import PhoneInput from 'react-phone-number-input/input';
+import InputMask from 'react-input-mask';
+// import validate from '../../utils/validateInfo';
+// import useForm from '../../hooks/useForm';
+import api from '../../services/api';
 
 const Signup = () => {
-  const initialState = {
+  // const { handleChange, values, handleSubmit } = useForm(validate);
+
+  const [values, setValues] = useState({
     email: '',
     password: '',
     name: '',
     neighborhood: '',
     street: '',
-    number: 0,
+    number: '',
     complement: '',
     cep: '',
     city: '',
     phone: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
   };
 
-  const [email, setEmail] = useState(initialState.email);
-  const [password, setPassword] = useState(initialState.password);
-  const [name, setName] = useState(initialState.name);
-  const [neighborhood, setNeighborhood] = useState(initialState.neighborhood);
-  const [street, setStreet] = useState(initialState.street);
-  const [number, setNumber] = useState(initialState.number);
-  const [complement, setComplement] = useState(initialState.complement);
-  const [cep, setCep] = useState(initialState.cep);
-  const [city, setCity] = useState(initialState.city);
-  const [phone, setPhone] = useState(initialState.phone);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    api.post('/api/gyms', {
+      values,
+    });
+  };
 
   return (
     <div className="flex flex-col mx-auto justify-center p-4 lg:w-4/12 lg:mt-16">
@@ -34,120 +43,137 @@ const Signup = () => {
       <h4 className="text-dark_grey font-light text-lg">
         e tenha acesso a nossa plataforma
       </h4>
-      <label className="text-dark_grey text-2xl font-light mt-6">E-mail</label>
-      <input
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        type="text"
-        name="email"
-        placeholder="Digite seu endereço de e-mail"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <label for="password" className="text-dark_grey text-2xl font-light mt-6">
-        Senha
-      </label>
-      <input
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        type="password"
-        name="password"
-        placeholder="Digite sua senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <label className="text-dark_grey text-2xl font-light mt-6">
-        Nome da academia
-      </label>
-      <input
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        type="text"
-        name="name"
-        placeholder="Digite o nome da sua academia"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <label className="text-dark_grey text-2xl font-light mt-6">Bairro</label>
-      <input
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        type="text"
-        name="neighborhood "
-        placeholder="Digite o bairro da academia"
-        value={neighborhood}
-        onChange={(e) => setNeighborhood(e.target.value)}
-      />
-      <label className="text-dark_grey text-2xl font-light mt-6 w">Rua</label>
-      <input
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        type="text"
-        name="street"
-        placeholder="Digite a rua da academia"
-        value={street}
-        onChange={(e) => setStreet(e.target.value)}
-      />
-      <label className="text-dark_grey text-2xl font-light mt-6 w">
-        Número
-      </label>
-      <input
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        type="number"
-        name="number"
-        placeholder="Digite o bairro da academia"
-        value={number}
-        onChange={(e) => setNumber(e.target.value)}
-      />
-      <label className="text-dark_grey text-2xl font-light mt-6 w">
-        Complemento
-      </label>
-      <input
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        type="text"
-        name="street"
-        placeholder="Digite um complemento da academia"
-        value={complement}
-        onChange={(e) => setComplement(e.target.value)}
-      />
-      <label className="text-dark_grey text-2xl font-light mt-6 w">CEP</label>
-      <Cep
-        value={cep}
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        name="cep"
-        placeholder="Digite o cep da academia"
-        onChange={(cep) => setCep(cep)}
-      />
-      <label className="text-dark_grey text-2xl font-light mt-6 w">
-        Cidade
-      </label>
-      <input
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        type="text"
-        name="city"
-        placeholder="Digite a cidade da academia"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <label className="text-dark_grey text-2xl font-light mt-6 w">
-        Telefone
-      </label>
-      <PhoneInput
-        country="BR"
-        value={phone}
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        placeholder="Digite o telefone da academia"
-        onChange={setPhone}
-      />
-      <div className="flex flex-col justify-center items-center ">
-        <button
-          type="submit"
-          className="bg-primary mt-8 p-2 rounded-full text-white font-bold w-1/2 hover:opacity-75 focus:outline-none"
+      <form onSubmit={handleSubmit} className="flex flex-col">
+        <label className="text-dark_grey text-2xl font-light mt-6">
+          E-mail <span className="text-red-500">*</span>
+        </label>
+        <input
+          className="border-b py-1 text-dark_grey outline-none border-gray-600 placeholder-gray-600"
+          type="text"
+          name="email"
+          placeholder="Digite seu endereço de e-mail"
+          value={values.email}
+          onChange={handleChange}
+        />
+        <label
+          for="password"
+          className="text-dark_grey text-2xl font-light mt-6"
         >
-          Cadastrar
-        </button>
-        <p className="font-light mt-4">
-          Já possui uma conta? Faça login{' '}
-          <Link to="/cadastro" className="text-primary font-normal">
-            clicando aqui
-          </Link>
-        </p>
-      </div>
+          Senha <span className="text-red-500">*</span>
+        </label>
+        <input
+          className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none border-gray-600 placeholder-gray-600"
+          type="password"
+          name="password"
+          placeholder="Digite sua senha"
+          value={values.password}
+          onChange={handleChange}
+        />
+        <label className="text-dark_grey text-2xl font-light mt-6">
+          Nome da academia <span className="text-red-500">*</span>
+        </label>
+        <input
+          className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
+          type="text"
+          name="name"
+          placeholder="Digite o nome da sua academia"
+          value={values.name}
+          onChange={handleChange}
+        />
+        <label className="text-dark_grey text-2xl font-light mt-6">
+          Bairro <span className="text-red-500">*</span>
+        </label>
+        <input
+          className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
+          type="text"
+          name="neighborhood"
+          placeholder="Digite o bairro da academia"
+          value={values.neighborhood}
+          onChange={handleChange}
+        />
+        <label className="text-dark_grey text-2xl font-light mt-6 w">
+          Rua <span className="text-red-500">*</span>
+        </label>
+        <input
+          className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
+          type="text"
+          name="street"
+          placeholder="Digite a rua da academia"
+          value={values.street}
+          onChange={handleChange}
+        />
+        <label className="text-dark_grey text-2xl font-light mt-6 w">
+          Número <span className="text-red-500">*</span>
+        </label>
+        <InputMask
+          mask="99999"
+          className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
+          type="text"
+          name="number"
+          placeholder="Digite o bairro da academia"
+          value={values.number}
+          onChange={handleChange}
+        />
+        <label className="text-dark_grey text-2xl font-light mt-6 w">
+          Complemento
+        </label>
+        <input
+          className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
+          type="text"
+          name="complement"
+          placeholder="Digite um complemento da academia"
+          value={values.complement}
+          onChange={handleChange}
+        />
+        <label className="text-dark_grey text-2xl font-light mt-6 w">
+          CEP <span className="text-red-500">*</span>
+        </label>
+        <InputMask
+          mask="99999-999"
+          value={values.cep}
+          className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none border-gray-600 placeholder-gray-600"
+          name="cep"
+          placeholder="Digite o cep da academia"
+          onChange={handleChange}
+        />
+        <label className="text-dark_grey text-2xl font-light mt-6 w">
+          Cidade <span className="text-red-500">*</span>
+        </label>
+        <input
+          className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
+          type="text"
+          name="city"
+          placeholder="Digite a cidade da academia"
+          value={values.city}
+          onChange={handleChange}
+        />
+        <label className="text-dark_grey text-2xl font-light mt-6 w">
+          Telefone <span className="text-red-500">*</span>
+        </label>
+        <InputMask
+          mask="(99) 99999-9999"
+          name="phone"
+          value={values.phone}
+          className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
+          placeholder="Digite o telefone da academia"
+          onChange={handleChange}
+        />
+        <div className="flex flex-col justify-center items-center ">
+          <button
+            type="submit"
+            className="bg-primary mt-8 p-2 rounded-full text-white font-bold w-1/2 hover:opacity-75 focus:outline-none"
+          >
+            Cadastrar
+          </button>
+        </div>
+      </form>
+
+      <p className="font-light mt-4">
+        Já possui uma conta? Faça login{' '}
+        <Link to="/cadastro" className="text-primary font-normal">
+          clicando aqui
+        </Link>
+      </p>
     </div>
   );
 };
