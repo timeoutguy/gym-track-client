@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import NewClient from './pages/NewClient';
 
 const Routes = () => {
   return (
@@ -14,6 +15,7 @@ const Routes = () => {
       <Route path="/login" component={Login} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/cadastro" component={Signup} />
+      <Route path="/newclient" component={NewClient} />
     </Switch>
   );
 };
