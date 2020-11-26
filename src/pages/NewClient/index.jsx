@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Cep from 'react-simple-cep-mask';
-import PhoneInput from 'react-phone-number-input/input';
 
 const NewClient = () => {
   const initialState = {
@@ -15,20 +13,18 @@ const NewClient = () => {
     city: '',
     phone: '',
     height: '',
-    wight: '',
+    weight: '',
   };
 
-  const [name, setName] = useState(initialState.name);
-  const [sex, setSex] = useState(initialState.sex);
-  const [neighborhood, setNeighborhood] = useState(initialState.neighborhood);
-  const [street, setStreet] = useState(initialState.street);
-  const [number, setNumber] = useState(initialState.number);
-  const [complement, setComplement] = useState(initialState.complement);
-  const [zipcode, setZipcode] = useState(initialState.zipcode);
-  const [city, setCity] = useState(initialState.city);
-  const [phone, setPhone] = useState(initialState.phphoneone);
-  const [height, setHeight] = useState(initialState.height);
-  const [weight, setWeight] = useState(initialState.weight);
+  const [values, setValues] = useState(initialState);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
 
   return (
     <div className="flex flex-col mx-auto justify-center p-4 lg:w-4/12 lg:mt-16">
@@ -41,8 +37,8 @@ const NewClient = () => {
         type="text"
         name="name"
         placeholder="Digite o nome do aluno"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={values.name}
+        onChange={handleChange}
       />
       <label for="sex" className="text-dark_grey text-2xl font-light mt-6">
         Sexo
@@ -51,8 +47,8 @@ const NewClient = () => {
         name="sex"
         id="sex"
         className="w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-        value={sex}
-        onChange={(e) => setSex(e.target.value)}
+        value={values.sex}
+        onChange={handleChange}
       >
         <option value="masculino">Masculino</option>
         <option value="feminino">Feminino</option>
@@ -69,8 +65,8 @@ const NewClient = () => {
         type="text"
         name="neighborhood"
         placeholder="Digite o bairro da academia"
-        value={neighborhood}
-        onChange={(e) => setNeighborhood(e.target.value)}
+        value={values.neighborhood}
+        onChange={handleChange}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">Rua</label>
       <input
@@ -78,8 +74,8 @@ const NewClient = () => {
         type="text"
         name="street"
         placeholder="Digite a rua da academia"
-        value={street}
-        onChange={(e) => setStreet(e.target.value)}
+        value={values.street}
+        onChange={handleChange}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">
         Número
@@ -89,8 +85,8 @@ const NewClient = () => {
         type="number"
         name="number"
         placeholder="Digite o bairro da academia"
-        value={number}
-        onChange={(e) => setNumber(e.target.value)}
+        value={values.number}
+        onChange={handleChange}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">
         Complemento
@@ -98,19 +94,19 @@ const NewClient = () => {
       <input
         className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
         type="text"
-        name="street"
+        name="complement"
         placeholder="Digite um complemento da academia"
-        value={complement}
-        onChange={(e) => setComplement(e.target.value)}
+        value={values.complement}
+        onChange={handleChange}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">CEP</label>
-      <Cep
-        value={zipcode}
+      {/* <Cep
+        value={values.zipcode}
         className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
         name="cep"
         placeholder="Digite o cep da academia"
-        onChange={(cep) => setZipcode(cep)}
-      />
+        onChange={handleChange}
+      /> */}
       <label className="text-dark_grey text-2xl font-light mt-6 w">
         Cidade
       </label>
@@ -119,19 +115,19 @@ const NewClient = () => {
         type="text"
         name="city"
         placeholder="Digite a cidade da academia"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
+        value={values.city}
+        onChange={handleChange}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">
         Telefone
       </label>
-      <PhoneInput
+      {/* <PhoneInput
         country="BR"
-        value={phone}
+        value={values.phone}
         className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
         placeholder="Digite o telefone da academia"
-        onChange={setPhone}
-      />
+        onChange={handleChange}
+      /> */}
       <label for="height" className="text-dark_grey text-2xl font-light mt-6 w">
         Altura
       </label>
@@ -140,8 +136,8 @@ const NewClient = () => {
         type="text"
         name="height"
         placeholder="Digite a altura do aluno. Ex: 169"
-        value={height}
-        onChange={(e) => setHeight(e.target.value)}
+        value={values.height}
+        onChange={handleChange}
       />
       <label for="weight" className="text-dark_grey text-2xl font-light mt-6 w">
         Peso
@@ -151,8 +147,8 @@ const NewClient = () => {
         type="text"
         name="weight"
         placeholder="Digite o peso do aluno. Ex: 169"
-        value={weight}
-        onChange={(e) => setWeight(e.target.value)}
+        value={values.weight}
+        onChange={handleChange}
       />
       <div className="flex flex-col justify-center items-center ">
         <button
