@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import InputMask from 'react-input-mask';
 
 const NewClient = () => {
   const initialState = {
@@ -100,13 +101,14 @@ const NewClient = () => {
         onChange={handleChange}
       />
       <label className="text-dark_grey text-2xl font-light mt-6 w">CEP</label>
-      {/* <Cep
+      <InputMask
+        mask="99999-999"
         value={values.zipcode}
-        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
-        name="cep"
+        className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none border-gray-600 placeholder-gray-600"
+        name="zipcode"
         placeholder="Digite o cep da academia"
         onChange={handleChange}
-      /> */}
+      />
       <label className="text-dark_grey text-2xl font-light mt-6 w">
         Cidade
       </label>
@@ -121,13 +123,14 @@ const NewClient = () => {
       <label className="text-dark_grey text-2xl font-light mt-6 w">
         Telefone
       </label>
-      {/* <PhoneInput
-        country="BR"
+      <InputMask
+        mask="99 99999-9999"
+        name="phone"
         value={values.phone}
         className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
         placeholder="Digite o telefone da academia"
         onChange={handleChange}
-      /> */}
+      />
       <label for="height" className="text-dark_grey text-2xl font-light mt-6 w">
         Altura
       </label>
