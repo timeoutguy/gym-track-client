@@ -25,12 +25,18 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex md:px-32 md:py-6 pl-8 py-3">
+      <div className="flex justify-between md:px-32 md:py-6 pl-8 py-3">
         <Link
           to="/newclient"
           className="bg-primary mt-8 px-4 py-2 rounded-full text-white font-bold "
         >
           Adicionar Alunos
+        </Link>
+        <Link
+          to="/dashboard/instrutores"
+          className="mt-12 text-primary font-bold"
+        >
+          Visualizar instrutores
         </Link>
       </div>
       <div className="flex flex-col justify-center p-4 lg:px-40 ">
