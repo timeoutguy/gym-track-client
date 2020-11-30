@@ -7,9 +7,11 @@ import { ReactComponent as Peso } from '../../assets/peso.svg';
 import { ReactComponent as Regua } from '../../assets/regua.svg';
 import Modal from 'react-modal';
 import InputMask from 'react-input-mask';
+import api from '../../services/api';
 
 const Students = ({
   id,
+  email,
   name,
   phone,
   height,
@@ -24,6 +26,7 @@ const Students = ({
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [data, setData] = useState({
     id,
+    email,
     name,
     phone,
     height,
@@ -34,14 +37,22 @@ const Students = ({
     city,
     zipcode,
     sex,
+    gym_id: 1,
+    birthday: '2002-04-26',
+    password: 'password',
+    medical_conditions: {},
+    emergency_contacts: {},
   });
 
   const handleDelete = () => {
-    console.log(id);
+    api.delete(`/api/clients/${id}`);
   };
 
   const handleEdit = () => {
-    console.log(id);
+    api
+      .put(`/api/clients/${id}`, data)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err.response));
     setModalIsOpen(false);
   };
 
@@ -195,7 +206,7 @@ const Students = ({
             onClick={handleEdit}
             className="bg-primary mt-8 p-2 rounded-full text-white font-bold w-1/2 hover:opacity-75 focus:outline-none mx-auto"
           >
-            Cadastrar
+            Salvar
           </button>
         </div>
       </Modal>
@@ -216,7 +227,7 @@ const Students = ({
         <div className="flex flex-row md:w-11/12">
           <Casa className="h-12 w-12 pb-5" />
           <p className="text-dark_grey md:pl-2">
-            {data.street}, {data.number}, {data.eighborhood}, {data.city} -{' '}
+            {data.street}, {data.number}, {data.neighborhood}, {data.city} -{' '}
             {data.zipcode}
           </p>
         </div>

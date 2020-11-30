@@ -7,15 +7,15 @@ const Dashboard = () => {
   const token = localStorage.getItem('token');
   api.defaults.headers.Authorization = token;
 
-  const getGymData = async () => {
-    const response = await api.post('/api/auth/me');
-    console.log(response);
-  };
+  // const getGymData = async () => {
+  //   const response = await api.post('/api/auth/me');
+  //   console.log(response);
+  // };
 
-  getGymData();
+  // getGymData();
 
   const getClientData = async () => {
-    const response = await api.get('/api/clients');
+    const response = await api.get('/api/clients/gym/1');
     setClientsData(response.data.clients.data);
   };
 
@@ -39,6 +39,7 @@ const Dashboard = () => {
             <Students
               key={i}
               id={student.id}
+              email={student.email}
               name={student.name}
               phone={student.phone}
               weight={student.weight}
