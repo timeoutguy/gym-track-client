@@ -8,12 +8,12 @@ const Home = () => {
       <div className="p-4 flex flex-col items-center justify-center lg:px-24 lg:py-16 lg:flex-row">
         <div className=" lg:w-1/2 pr-8">
           <h1 className="text-3xl font-bold text-dark_grey">
-            Facilite a forma como você treina
+            Facilite a forma como gere sua academia
           </h1>
           <p className="text-dark_grey text-2xl">
-            Usando <b> Gym Track </b> você tem acesso as suas listar de
-            exercicios para cada dia da semana e recebe mais informações sobre
-            como eles atuam no seu corpo
+            Usando <b> Gym Track </b> você tem disponibilidade para gerir seus
+            funcionarios e seus clientes, tendo acesso a todos os dados deles
+            facilitando a comunicação instrutor cliente
           </p>
         </div>
         <div className="lg:ml-24">
@@ -23,18 +23,18 @@ const Home = () => {
       <div className="p-4 lg:px-24 flex flex-col lg:flex-row">
         <Step
           stepNumber={1}
-          title="O seu instrutor te cadastra no sistema"
-          description="Ao ingressar na academia o instrutor te cadastra no sistema e te informa as credencias para fazer login"
+          title="Você gere seus instrutores"
+          description="O gerente da academia tem acesso para gerir instrutores com seus dados no sistema"
         />
         <Step
           stepNumber={2}
-          title="Encontre sua lista de exercicio de forma pratica"
-          description="Por meio do sistema você consegue visualizar as listas de exercicios para cada dia da semana e como os exercicios agem no seu corpo"
+          title="O seu instrutor te cadastra no sistema"
+          description="Ao ingressar na academia o instrutor te cadastra no sistema e fica com suas informações para casos de emergência"
         />
         <Step
           stepNumber={3}
-          title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam scelerisque nunc non accumsan congue. Vivamus elementum scelerisque urna in ultrices."
+          title="Implementações futuras"
+          description="No futuro nosso sistema irá fornecer explicações detalhadas sobre cada exercício para seus alunos, fazendo com que ele possa montar sua série em casa"
         />
       </div>
     </>
