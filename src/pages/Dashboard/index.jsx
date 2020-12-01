@@ -1,27 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Students from '../../components/Students/index';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 const Dashboard = () => {
+  const [clientsData, setClientsData] = useState([]);
   const token = localStorage.getItem('token');
   api.defaults.headers.Authorization = token;
 
-  // const getGymData = async () => {
-  //   const response = await api.post('/api/auth/me');
-  //   console.log(response);
-  // };
+  useEffect(() => {
+    const getClientData = async () => {
+      const response = await api.get('/api/clients/gym/1');
+      setClientsData(response.data.clients.data);
+    };
 
-  // getGymData();
-
-  const getClientData = async () => {
-    const response = await api.get('/api/clients/gym/1');
-    setClientsData(response.data.clients.data);
-  };
-
-  getClientData();
-
-  const [clientsData, setClientsData] = useState([]);
+    getClientData();
+  }, [clientsData]);
 
   return (
     <>
