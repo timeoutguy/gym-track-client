@@ -234,7 +234,7 @@ const NewClient = () => {
           className="border-b border-gray-600 placeholder-gray-600 py-1 text-dark_grey outline-none"
           type="text"
           name="weight"
-          placeholder="Digite o peso do aluno. Ex: 169"
+          placeholder="Digite o peso do aluno. Ex: 80"
           value={values.weight}
           onChange={handleChange}
         />
