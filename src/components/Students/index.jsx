@@ -8,6 +8,8 @@ import { ReactComponent as Regua } from '../../assets/regua.svg';
 import Modal from 'react-modal';
 import InputMask from 'react-input-mask';
 import api from '../../services/api';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Students = ({
   id,
@@ -44,17 +46,55 @@ const Students = ({
     emergency_contacts: {},
   });
 
-  const handleDelete = () => {
-    api.delete(`/api/clients/${id}`);
+  const handleDelete = async () => {
+    await api.delete(`/api/clients/${id}`);
+    notifyDeleteSucces();
   };
+
+  const notifyDeleteSucces = () =>
+    toast.success('😎👍 O aluno foi deletado com sucesso.', {
+      position: 'top-right',
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   const handleEdit = () => {
     api
       .put(`/api/clients/${id}`, data)
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err.response));
-    setModalIsOpen(false);
+      .then(() => {
+        notifyEditSucces();
+        setModalIsOpen(false);
+      })
+      .catch(() => notifyEditError());
   };
+
+  const notifyEditSucces = () =>
+    toast.success('😎👍 Edição efetuada com sucesso.', {
+      position: 'top-right',
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  const notifyEditError = () =>
+    toast.error(
+      '💀 Um erro ocorreu. Verifique se todos os campos estão preenchidos',
+      {
+        position: 'top-right',
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -74,6 +114,17 @@ const Students = ({
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
         <div className="flex flex-row justify-between">
           <h1 className="text-xl">
