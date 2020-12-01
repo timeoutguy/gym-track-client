@@ -10,8 +10,11 @@ const Footer = () => {
           <Link to="/" className="text-gray-600">
             Home
           </Link>
-          <Link to="/about" className="text-gray-600 mt-2">
-            Sobre
+          <Link to="/login" className="text-gray-600 mt-2">
+            Login
+          </Link>
+          <Link to="/cadastro" className="text-gray-600 mt-2">
+            Cadastro
           </Link>
         </ul>
         <div className="flex flex-row justify-center text-center">
