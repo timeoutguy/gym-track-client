@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import NewClient from './pages/NewClient';
+import NewInstructor from './pages/NewInstructor';
 
 const Routes = () => {
   return (
@@ -17,6 +18,7 @@ const Routes = () => {
       <Route path="/dashboard/instrutores" component={Instructor} />
       <Route path="/cadastro" component={Signup} />
       <Route path="/newclient" component={NewClient} />
+      <Route path="/newinstructor" component={NewInstructor} />
     </Switch>
   );
 };
