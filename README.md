@@ -1,3 +1,59 @@
+## Extensões do VSCode recomendadas:
+
+- Tailwind CSS IntelliSense
+- ESlint
+- Gitlens
+- Prettier
+- ES7 React/Redux/GraphQL/React-Native snippets
+- vscode-styled-components
+
+## Criando novos componentes
+
+Quando for criar um novo componente, criar uma pasta com o nome do componente dentro da pasta `components` e dentro dessa pasta um arquivos index.jsx. Exemplo do componente `Texto`:
+`src/components/Texto/index.jsx`
+
+```js
+import React from 'react';
+const Texto = () => {
+  return <h1>Texto</h1>;
+};
+export default Texto;
+```
+
+## Criando novas páginas
+
+Quando for criar uma nova pagina, criar uma pasta com o nome da página dentro da pasta `pages` e dentro dessa pasta um arquivos index.jsx. Exemplo da página `Home`:
+`src/pages/Home/index.jsx`
+
+```js
+import React from 'react';
+const Home = () => {
+  return (
+    <div>
+      <h1> Bem vindo </h1>
+    </div>
+  );
+};
+export default Home;
+```
+
+após isso é necessário ir no arquivo `routes.js` e criar uma rota para essa página. Exemplo:
+
+```js
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+// Importar páginas aqui
+import Home from './pages/Home';
+const Routes = () => {
+  return (
+    <Switch>
+      <Route exact path="/" component={Home} />
+    </Switch>
+  );
+};
+export default Routes;
+```
+
 ## Scripts do projeto
 
 ### `yarn start`
@@ -16,16 +72,6 @@ Inicia a aplicação no modo teste.<br />
 Builda a aplicação e salva na pasta `build`.<br />
 Serve para otimizar a aplicação react e lançar sua versão final.
 [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ### `yarn watch:css`
 
